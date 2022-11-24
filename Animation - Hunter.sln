@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animation - Hunter", "Animation - Hunter.csproj", "{7569B990-F5CD-4254-93E4-0B63B67E7DC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7569B990-F5CD-4254-93E4-0B63B67E7DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7569B990-F5CD-4254-93E4-0B63B67E7DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7569B990-F5CD-4254-93E4-0B63B67E7DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7569B990-F5CD-4254-93E4-0B63B67E7DC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB8080E3-5A69-4B77-A8A8-C282349B18D1}
+	EndGlobalSection
+EndGlobal
