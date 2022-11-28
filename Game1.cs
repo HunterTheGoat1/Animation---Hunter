@@ -24,6 +24,13 @@ namespace Animation___Hunter
         Vector2 orangeSpeed;
         public static Random ran;
         int randomNum;
+        int backNum = 0;
+
+        enum Screen
+        {
+            Intro,
+            TribbleYard
+        }
 
         public Game1()
         {
@@ -97,12 +104,20 @@ namespace Animation___Hunter
             if (tribbleCreamRect.Right >= (_graphics.PreferredBackBufferWidth) || tribbleCreamRect.Left <= 0)
             {
                 creamSpeed.X *= -1;
-                randomNum = ran.Next(0, 5);
+                backNum++;
+                if (backNum == 5)
+                {
+                    backNum = 0;
+                }
             }
             if (tribbleCreamRect.Bottom >= (_graphics.PreferredBackBufferHeight) || tribbleCreamRect.Top <= 0)
             {
                 creamSpeed.Y *= -1;
-                randomNum = ran.Next(0, 5);
+                backNum++;
+                if (backNum == 5)
+                {
+                    backNum = 0;
+                }
             }
 
             if (tribbleOrangeRect.Right >= (_graphics.PreferredBackBufferWidth) || tribbleOrangeRect.Left <= 0)
@@ -128,16 +143,26 @@ namespace Animation___Hunter
 
 
 
-            if (randomNum == 0)
+            if (backNum == 0)
+            {
                 GraphicsDevice.Clear(Color.Tomato);
-            else if (randomNum == 1)
+            }
+            else if (backNum == 1)
+            {
                 GraphicsDevice.Clear(Color.Cyan);
-            else if (randomNum == 2)
+            }
+            else if (backNum == 2)
+            {
                 GraphicsDevice.Clear(Color.Green);
-            else if (randomNum == 3)
+            }
+            else if (backNum == 3)
+            {
                 GraphicsDevice.Clear(Color.Gold);
-            else if (randomNum == 4)
+            }
+            else if (backNum == 4)
+            {
                 GraphicsDevice.Clear(Color.BlueViolet);
+            }
 
             _spriteBatch.Begin();
             _spriteBatch.Draw(tribbleGreyTexture, tribbleGreyRect, Color.White);
