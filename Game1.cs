@@ -27,6 +27,7 @@ namespace Animation___Hunter
         int randomNum;
         int backNum = 0;
         Texture2D tribbleIntroTexture;
+        SpriteFont titleFont;
 
         enum Screen
         {
@@ -45,6 +46,7 @@ namespace Animation___Hunter
 
         protected override void Initialize()
         {
+            this.Window.Title = "Tribble Yard | Hunter";
             screen = Screen.Intro;
             randomNum = 4;
             _graphics.PreferredBackBufferWidth = 800;
@@ -77,6 +79,7 @@ namespace Animation___Hunter
             tribbleBrownTexture = Content.Load<Texture2D>("tribbleBrown");
             tribbleCreamTexture = Content.Load<Texture2D>("tribbleCream");
             tribbleOrangeTexture = Content.Load<Texture2D>("tribbleOrange");
+            titleFont = Content.Load<SpriteFont>("TitleFont");
         }
 
         protected override void Update(GameTime gameTime)
@@ -86,14 +89,12 @@ namespace Animation___Hunter
                 Exit();
             if (screen == Screen.Intro)
             {
-                this.Window.Title = "Left click to start";
                 if (mouseState.LeftButton == ButtonState.Pressed)
                     screen = Screen.TribbleYard;
 
             }
             else if (screen == Screen.TribbleYard)
             {
-                this.Window.Title = "Welcome to the yard | Right click to leave";
                 if (mouseState.RightButton == ButtonState.Pressed)
                     screen = Screen.Outro;
 
@@ -151,7 +152,6 @@ namespace Animation___Hunter
             }
             else if (screen == Screen.Outro)
             {
-                this.Window.Title = "Thanks for playing! | Left click to close";
                 if (mouseState.LeftButton == ButtonState.Pressed)
                     Exit();
 
@@ -168,6 +168,7 @@ namespace Animation___Hunter
             if (screen == Screen.Intro)
             {
                 _spriteBatch.Draw(tribbleIntroTexture, new Rectangle(0, 0, 800, 600), Color.White);
+                _spriteBatch.DrawString(titleFont, "Left click to enter the yard.", new Vector2(10, 10), Color.White);
             }
             else if (screen == Screen.TribbleYard)
             {
@@ -199,10 +200,13 @@ namespace Animation___Hunter
                 _spriteBatch.Draw(tribbleBrownTexture, tribbleBrownRect, Color.White);
                 _spriteBatch.Draw(tribbleCreamTexture, tribbleCreamRect, Color.White);
                 _spriteBatch.Draw(tribbleOrangeTexture, tribbleOrangeRect, Color.White);
+                _spriteBatch.DrawString(titleFont, "Right click to close.", new Vector2(10, 10), Color.White);
             }
             else if (screen == Screen.Outro)
             {
-                GraphicsDevice.Clear(Color.Cyan);
+                GraphicsDevice.Clear(Color.Green);
+                _spriteBatch.DrawString(titleFont, "Thanks for playing!", new Vector2(10, 10), Color.White);
+                _spriteBatch.DrawString(titleFont, "Left click to exit.", new Vector2(10, 100), Color.White);
             }
                 _spriteBatch.End();
 
