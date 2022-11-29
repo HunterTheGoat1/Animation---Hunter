@@ -31,7 +31,8 @@ namespace Animation___Hunter
         enum Screen
         {
             Intro,
-            TribbleYard
+            TribbleYard,
+            Outro
         }
         Screen screen;
 
@@ -92,7 +93,9 @@ namespace Animation___Hunter
             }
             else if (screen == Screen.TribbleYard)
             {
-                this.Window.Title = "Welcome to the yard";
+                this.Window.Title = "Welcome to the yard | Right click to leave";
+                if (mouseState.RightButton == ButtonState.Pressed)
+                    screen = Screen.Outro;
 
                 tribbleGreyRect.X += (int)greySpeed.X;
                 tribbleGreyRect.Y += (int)greySpeed.Y;
@@ -146,6 +149,13 @@ namespace Animation___Hunter
                     tribbleOrangeRect.Y = ran.Next(0, 500);
                 }
             }
+            else if (screen == Screen.Outro)
+            {
+                this.Window.Title = "Thanks for playing! | Left click to close";
+                if (mouseState.LeftButton == ButtonState.Pressed)
+                    Exit();
+
+            }
             base.Update(gameTime);
         }
 
@@ -184,13 +194,17 @@ namespace Animation___Hunter
                     GraphicsDevice.Clear(Color.BlueViolet);
                 }
 
-                
+
                 _spriteBatch.Draw(tribbleGreyTexture, tribbleGreyRect, Color.White);
                 _spriteBatch.Draw(tribbleBrownTexture, tribbleBrownRect, Color.White);
                 _spriteBatch.Draw(tribbleCreamTexture, tribbleCreamRect, Color.White);
                 _spriteBatch.Draw(tribbleOrangeTexture, tribbleOrangeRect, Color.White);
             }
-            _spriteBatch.End();
+            else if (screen == Screen.Outro)
+            {
+                GraphicsDevice.Clear(Color.Cyan);
+            }
+                _spriteBatch.End();
 
             base.Draw(gameTime);
         }
